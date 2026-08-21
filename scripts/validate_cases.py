@@ -26,7 +26,7 @@ ALLOWED = {
     "primary_mechanism": {"target", "temporal", "preprocessing", "contamination", "evaluation"},
     "source_type": {"kaggle", "github", "paper"},
     "reproduction_status": {"reproduced", "partially_reproduced", "static_verified", "not_reproduced", "not_attempted"},
-    "impact_basis": {"measured", "inferred", "unknown"},
+    "impact_basis": {"measured", "source_measured", "inferred", "unknown"},
 }
 SOURCE_STATUSES = {"candidate", "under_review", "verified_case", "no_leakage_detected", "excluded", "inaccessible"}
 

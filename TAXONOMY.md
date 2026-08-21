@@ -10,6 +10,7 @@ Features contain the label, a transformation of it, or information only created 
 - `target_aggregate`: target statistics use evaluation rows or labels.
 - `post_outcome_feature`: a feature is unavailable until after the predicted event.
 - `label_in_pretraining`: evaluation labels enter a learned representation or prompt corpus.
+- `missingness_proxy`: whether a field is recorded depends on the known outcome.
 
 ## Temporal leakage (`temporal`)
 
@@ -62,6 +63,7 @@ Ambiguous records may remain in the research log, but they are excluded from the
 
 ## Impact labels
 
-- `measured`: leaky and corrected pipelines were compared under a controlled rerun.
+- `measured`: the atlas independently reproduced a controlled leaky-versus-corrected comparison.
+- `source_measured`: the cited source reports a controlled comparison, but the atlas has not independently rerun it.
 - `inferred`: the direction of bias follows from the information path, but magnitude was not measured.
 - `unknown`: available artifacts do not support an impact claim.

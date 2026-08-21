@@ -59,6 +59,32 @@ class ValidatorTests(unittest.TestCase):
         write_csv(root / "data/cases.csv", CASE_COLUMNS, [row])
         self.assertTrue(any("measured impact requires" in error for error in validate(root)))
 
+    def test_source_measured_impact_does_not_claim_atlas_reproduction(self):
+        root = self.make_root()
+        case_file = root / "cases/MLA-003_example.md"
+        row = dict.fromkeys(CASE_COLUMNS, "value")
+        row.update({
+            "case_id": "MLA-003", "title": "Source measured leakage case",
+            "status": "verified", "confidence": "confirmed",
+            "primary_mechanism": "contamination", "subtype": "group_overlap",
+            "source_type": "paper", "source_url": "https://doi.org/10.1234/example",
+            "source_revision": "doi:10.1234/example",
+            "reproduction_status": "static_verified", "impact_basis": "source_measured",
+            "case_file": "cases/MLA-003_example.md",
+        })
+        case_file.write_text(
+            "---\n" + "\n".join(
+                f"{field}: {row[field]}" for field in (
+                    "case_id", "status", "confidence", "primary_mechanism", "subtype",
+                    "source_type", "source_url", "source_revision",
+                    "reproduction_status", "impact_basis",
+                )
+            ) + "\n---\n# evidence\n",
+            encoding="utf-8",
+        )
+        write_csv(root / "data/cases.csv", CASE_COLUMNS, [row])
+        self.assertEqual(validate(root), [])
+
 
 if __name__ == "__main__":
     unittest.main()

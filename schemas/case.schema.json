@@ -16,7 +16,7 @@
     "source_url": {"type": "string", "format": "uri"},
     "source_revision": {"type": "string", "minLength": 1},
     "reproduction_status": {"enum": ["reproduced", "partially_reproduced", "static_verified", "not_reproduced", "not_attempted"]},
-    "impact_basis": {"enum": ["measured", "inferred", "unknown"]},
+    "impact_basis": {"enum": ["measured", "source_measured", "inferred", "unknown"]},
     "case_file": {"type": "string", "pattern": "^cases/MLA-[0-9]{3}[-_].+\\.md$"}
   }
 }
