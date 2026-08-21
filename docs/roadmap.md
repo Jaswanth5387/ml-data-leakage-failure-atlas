@@ -9,15 +9,16 @@
 
 ## Phase 1 — Corpus freeze
 
-- [ ] Export the exact notebook/version manifest
-- [ ] Record licenses and access constraints
-- [ ] Publish screening protocol and reviewer assignments
+- [x] Freeze the first eight-source GitHub discovery tranche
+- [x] Record exact revisions, licenses, and screening outcomes
+- [ ] Export the separate Kaggle notebook/version manifest
+- [ ] Assign independent reviewers
 
 ## Phase 2 — Screening and verification
 
-- [ ] Screen the frozen corpus
+- [x] Screen GitHub tranche 1
 - [ ] Deduplicate copied implementations
-- [ ] Reproduce high-confidence candidates
+- [ ] Reproduce the seven high-confidence cases
 - [ ] Obtain independent review for every verified case
 
 ## Phase 3 — First dataset release
@@ -33,4 +34,3 @@
 - [ ] Report measured metric changes without cherry-picking
 - [ ] Submit the lightning talk
 - [ ] Design an agent-evaluation benchmark from reviewed cases
-

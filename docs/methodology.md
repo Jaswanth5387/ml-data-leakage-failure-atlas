@@ -1,27 +1,43 @@
 # Methodology
 
-## 1. Scope
+## 1. Current scope
 
-The pilot study uses a bounded Kaggle corpus spanning tabular classification, fraud detection, forecasting, and image classification. The five competition ecosystems are named in the root README.
+The completed first tranche is a targeted GitHub discovery corpus. It contains eight repositories frozen at exact commits on 2026-08-21 and spans tabular regression, imbalanced classification, fraud detection, loan default, demand forecasting, Titanic survival, and medical imaging.
 
-The unit of screening is a specific notebook version. Updated notebooks are separate versions when the relevant pipeline changed.
+Seven sources produced verified cases. One source was retained as a negative screening result after its actual feature list disproved the initial suspicion. The unit of screening is a specific file at a commit, not a moving default branch.
+
+This is not a prevalence sample. Candidate-search signatures deliberately over-sample likely failures. Counts describe this atlas tranche only.
 
 ## 2. Corpus freeze
 
-For each competition, collect up to 100 public notebooks ordered by Kaggle's public vote ranking on the collection date. Store the notebook slug, version number, URL, collection timestamp, license/access status, and screening state in `corpus/sources.csv`.
+Store repository/file identity, commit SHA, permalink, collection timestamp, license status, screening state, duplicate group, and notes in `corpus/sources.csv`.
 
-The frozen manifest controls inclusion. Later ranking changes do not alter a released corpus. If fewer than 100 notebooks are accessible, record all accessible notebooks and the reason the target was not reached.
+The frozen manifest controls inclusion. Later repository changes do not alter a released tranche. A new commit is a new screening unit when the relevant pipeline changes.
+
+### Discovery signatures for tranche 1
+
+- `fit_transform` or full-matrix scaling before `train_test_split`
+- `SMOTE.fit_resample` before `train_test_split`
+- default shuffled `train_test_split` in a forecasting task
+- Titanic `boat` or `body` fields used to predict survival
+- duplicate or near-duplicate images discussed across train/test boundaries
+
+Search results were manually checked against execution order and task semantics. A matching string did not determine the verdict.
+
+### Planned Kaggle tranche
+
+The next corpus freeze will sample up to 100 public notebook versions from each of five named competition ecosystems: Home Credit Default Risk, IEEE-CIS Fraud Detection, M5 Forecasting — Accuracy, Store Sales — Time Series Forecasting, and Histopathologic Cancer Detection. The exact slugs and versions must be exported before screening.
 
 ## 3. Inclusion criteria
 
-- Public source is inspectable at a stable notebook version or archived revision.
-- The notebook trains or evaluates an ML system on the named competition data.
+- Public source is inspectable at an immutable commit, notebook version, DOI, or archive.
+- The artifact trains, evaluates, or directly audits an ML system or source corpus.
 - The prediction target and intended evaluation boundary can be established.
 - Enough code and data semantics are available to trace the suspected information path.
 
 ## 4. Exclusion criteria
 
-- Tutorials or prose-only discussions with no executed project pipeline.
+- Hypothetical tutorials or prose-only discussions with no traced implementation or dataset audit.
 - Forks that reproduce the same leaking implementation without a meaningful change; record them as related sources rather than new cases.
 - Inaccessible versions, missing essential data, or licenses that prohibit the needed inspection.
 - Suspicious code patterns that do not cross the task's actual evaluation boundary.
@@ -62,4 +78,3 @@ Source authors may open a correction issue. Substantive corrections are versione
 ## 9. Limitations
 
 The corpus is not representative of all ML practice. Public notebooks favor successful, visible work and may differ from production systems. Missing environments can prevent impact measurement. Finding leakage in a public artifact does not establish that the same issue existed in any private or production pipeline.
-

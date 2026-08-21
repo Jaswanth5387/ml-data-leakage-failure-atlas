@@ -15,6 +15,9 @@ def write_csv(path: Path, columns: list[str], rows: list[dict[str, str]]) -> Non
 
 
 class ValidatorTests(unittest.TestCase):
+    def test_repository_indexes_are_valid(self):
+        self.assertEqual(validate(), [])
+
     def make_root(self) -> Path:
         root = Path(tempfile.mkdtemp())
         write_csv(root / "corpus/sources.csv", SOURCE_COLUMNS, [])
@@ -59,4 +62,3 @@ class ValidatorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

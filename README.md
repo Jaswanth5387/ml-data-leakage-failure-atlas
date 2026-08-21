@@ -4,29 +4,39 @@ An evidence-first catalog of data leakage found in real, publicly accessible mac
 
 This repository is a research artifact, not a collection of textbook examples. Every accepted case must point to a stable public source, identify the exact leaking code or data operation, explain the violated evaluation boundary, and record how the finding was checked.
 
-> **Project status:** foundation / candidate collection. There are currently **0 verified cases**. Counts will only increase after evidence review. Empty data files are intentional; no cases have been invented to make the atlas look complete.
+> **Project status:** first research tranche. There are currently **7 verified, commit-pinned cases**. All seven are statically verified and have `inferred`, not measured, impact. Controlled reruns are the next stage.
 
 ## Research question
 
 How does data leakage appear in public ML work, how strong is the available evidence, and what changes when the leaking pipeline is corrected?
 
-## Initial bounded corpus
+## Current frozen corpus
 
-The first study targets public Kaggle notebooks associated with five competition ecosystems:
+The first completed screening tranche contains eight public GitHub repositories frozen at exact commits on 2026-08-21. Seven contain verified findings; one screened candidate did not use the suspected leaking field and remains in the manifest as a negative screening result.
 
-- Home Credit Default Risk
-- IEEE-CIS Fraud Detection
-- M5 Forecasting — Accuracy
-- Store Sales — Time Series Forecasting
-- Histopathologic Cancer Detection
+This tranche was selected with fixed candidate-discovery signatures for preprocessing before splitting, resampling before splitting, random time-series splitting, post-outcome Titanic fields, and duplicate medical images. It is a targeted discovery corpus, not a random sample, so its mechanism counts must not be presented as prevalence estimates.
 
-The frozen notebook/version list—not a changing search result—is the actual corpus. It will live in [`corpus/sources.csv`](corpus/sources.csv). Selection and stopping rules are in [`docs/methodology.md`](docs/methodology.md).
+The exact source and revision list lives in [`corpus/sources.csv`](corpus/sources.csv). A separately frozen Kaggle tranche across the five competition ecosystems originally proposed is still planned. Selection and counting rules are in [`docs/methodology.md`](docs/methodology.md).
+
+## Verified cases
+
+| Case | Mechanism | Real source | Evidence status |
+|---|---|---|---|
+| [MLA-001](cases/MLA-001_flood_scaling_before_split.md) | Scaling before split | Kaggle flood-prediction project | Static, impact inferred |
+| [MLA-002](cases/MLA-002_academic_success_smote_before_split.md) | SMOTE before split | Academic-success classification project | Static, impact inferred |
+| [MLA-003](cases/MLA-003_fraud_scaling_before_split.md) | Scaling before split | Credit-card fraud project | Static, impact inferred |
+| [MLA-004](cases/MLA-004_loan_default_scaling_before_split.md) | Scaling before split | Loan-default prediction project | Static, impact inferred |
+| [MLA-005](cases/MLA-005_store_demand_random_time_split.md) | Random temporal split | Store-item demand forecast | Static, impact inferred |
+| [MLA-006](cases/MLA-006_titanic_lifeboat_target_leakage.md) | Post-outcome feature | VerticaPy Titanic quickstart | Static, impact inferred |
+| [MLA-007](cases/MLA-007_covid_xray_duplicate_contamination.md) | Near-duplicate contamination | COVID chest X-ray project | Static, impact inferred |
+
+Current mechanism count: preprocessing 4, temporal 1, target 1, contamination 1.
 
 ## What qualifies as a case
 
 A case must include:
 
-1. a real, citable public source and stable revision identifier;
+1. a real, citable public source and immutable revision identifier;
 2. exact evidence showing information crossing the intended train/evaluation boundary;
 3. a mechanism and subtype from the taxonomy;
 4. a confidence label: `confirmed`, `probable`, or `ambiguous`;
@@ -66,7 +76,7 @@ python -m unittest discover -s tests -v
 4. Include archived evidence only when its license permits redistribution; otherwise record a stable URL, revision, file path, and line range.
 5. Run the validator and open a pull request using the review checklist.
 
-Candidates are not automatically findings. A suspicious pattern such as `fit_transform` before `train_test_split` still needs task-specific verification.
+Candidates are not automatically findings. For example, `shantnu/Titanic-Machine-Learning` appeared in a search because its dataset contains a `boat` column, but the pinned model uses only class, age, and sex. It is retained as `no_leakage_detected` rather than being padded into the case count.
 
 ## Outputs
 
@@ -83,4 +93,3 @@ This project studies code and evaluation design. It does not label authors as ca
 ## Citation and license
 
 Citation metadata is in [`CITATION.cff`](CITATION.cff). Dataset and written case annotations are licensed under [CC BY 4.0](LICENSE-DATA); repository code is licensed under the [MIT License](LICENSE-CODE). Source projects retain their own copyrights and licenses.
-
