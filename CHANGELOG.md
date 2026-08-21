@@ -13,3 +13,5 @@ All notable changes to the atlas are recorded here.
 - Distinguished source-reported impact measurements from independent atlas reproductions.
 - Recorded two negative screening results instead of padding them into the case count.
 - Kept atlas-measured impact separate from controlled comparisons reported by primary sources.
+
+[0.1.0]: https://doi.org/10.5281/zenodo.22046288
