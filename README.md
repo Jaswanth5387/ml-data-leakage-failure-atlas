@@ -4,7 +4,7 @@ An evidence-first catalog of data leakage found in real, publicly accessible mac
 
 This repository is a research artifact, not a collection of textbook examples. Every accepted case must point to a stable public source, identify the exact leaking code or data operation, explain the violated evaluation boundary, and record how the finding was checked.
 
-> **Project status:** first research tranche. There are currently **7 verified, commit-pinned cases**. All seven are statically verified and have `inferred`, not measured, impact. Controlled reruns are the next stage.
+> **Project status:** two research tranches. There are currently **13 verified, commit-pinned cases**. All 13 are statically verified and have `inferred`, not measured, impact. Controlled reruns are the next stage.
 
 ## Research question
 
@@ -12,9 +12,9 @@ How does data leakage appear in public ML work, how strong is the available evid
 
 ## Current frozen corpus
 
-The first completed screening tranche contains eight public GitHub repositories frozen at exact commits on 2026-08-21. Seven contain verified findings; one screened candidate did not use the suspected leaking field and remains in the manifest as a negative screening result.
+The completed screening corpus contains 15 public GitHub repositories frozen at exact commits on 2026-08-21. Thirteen contain verified findings; two candidates failed the evidence test and remain in the manifest as negative screening results.
 
-This tranche was selected with fixed candidate-discovery signatures for preprocessing before splitting, resampling before splitting, random time-series splitting, post-outcome Titanic fields, and duplicate medical images. It is a targeted discovery corpus, not a random sample, so its mechanism counts must not be presented as prevalence estimates.
+The tranches were selected with fixed candidate-discovery signatures for preprocessing before splitting, resampling before splitting, random time-series splitting, post-outcome Titanic fields, duplicate medical images, and use of a test partition during training or model selection. This is a targeted discovery corpus, not a random sample, so its mechanism counts must not be presented as prevalence estimates.
 
 The exact source and revision list lives in [`corpus/sources.csv`](corpus/sources.csv). A separately frozen Kaggle tranche across the five competition ecosystems originally proposed is still planned. Selection and counting rules are in [`docs/methodology.md`](docs/methodology.md).
 
@@ -29,8 +29,14 @@ The exact source and revision list lives in [`corpus/sources.csv`](corpus/source
 | [MLA-005](cases/MLA-005_store_demand_random_time_split.md) | Random temporal split | Store-item demand forecast | Static, impact inferred |
 | [MLA-006](cases/MLA-006_titanic_lifeboat_target_leakage.md) | Post-outcome feature | VerticaPy Titanic quickstart | Static, impact inferred |
 | [MLA-007](cases/MLA-007_covid_xray_duplicate_contamination.md) | Near-duplicate contamination | COVID chest X-ray project | Static, impact inferred |
+| [MLA-008](cases/MLA-008_dualgcn_test_set_early_stopping.md) | Test-set early stopping | DualGCN | Static, impact inferred |
+| [MLA-009](cases/MLA-009_pca_before_split.md) | Scaling and PCA before split | ML capstone project | Static, impact inferred |
+| [MLA-010](cases/MLA-010_cardiovascular_scaling_before_split.md) | Scaling before split | Cardiovascular-disease project | Static, impact inferred |
+| [MLA-011](cases/MLA-011_deepcdr_test_set_early_stopping.md) | Test-set early stopping | DeepCDR | Static, impact inferred |
+| [MLA-012](cases/MLA-012_drugcell_test_set_model_selection.md) | Test-set model selection | DrugCell | Static, impact inferred |
+| [MLA-013](cases/MLA-013_moli_feature_selection_before_cv.md) | Feature selection before CV | MOLI | Static, impact inferred |
 
-Current mechanism count: preprocessing 4, temporal 1, target 1, contamination 1.
+Current mechanism count: preprocessing 7, evaluation 3, temporal 1, target 1, contamination 1.
 
 ## What qualifies as a case
 
@@ -76,7 +82,7 @@ python -m unittest discover -s tests -v
 4. Include archived evidence only when its license permits redistribution; otherwise record a stable URL, revision, file path, and line range.
 5. Run the validator and open a pull request using the review checklist.
 
-Candidates are not automatically findings. For example, `shantnu/Titanic-Machine-Learning` appeared in a search because its dataset contains a `boat` column, but the pinned model uses only class, age, and sex. It is retained as `no_leakage_detected` rather than being padded into the case count.
+Candidates are not automatically findings. For example, `shantnu/Titanic-Machine-Learning` appeared in a search because its dataset contains a `boat` column, but the pinned model uses only class, age, and sex. A second candidate fitted an imputer before splitting, but its inspected feature matrix reported zero missing values, so the suspected information path was a no-op. Both are retained as `no_leakage_detected` rather than being padded into the case count.
 
 ## Outputs
 

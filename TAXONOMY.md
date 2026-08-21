@@ -42,6 +42,14 @@ Evaluation samples, entities, or near-equivalents also appear in training.
 - `augmentation_overlap`
 - `external_data_overlap`
 
+## Evaluation leakage (`evaluation`)
+
+Evaluation labels or metrics influence model, checkpoint, threshold, or hyperparameter selection.
+
+- `test_set_model_selection`: test performance chooses among models, epochs, or configurations.
+- `test_set_early_stopping`: the test set is supplied to a training-time callback or stopping rule.
+- `test_set_hyperparameter_tuning`: test performance directly tunes hyperparameters or thresholds.
+
 ## Confidence labels
 
 | Label | Meaning |
@@ -57,4 +65,3 @@ Ambiguous records may remain in the research log, but they are excluded from the
 - `measured`: leaky and corrected pipelines were compared under a controlled rerun.
 - `inferred`: the direction of bias follows from the information path, but magnitude was not measured.
 - `unknown`: available artifacts do not support an impact claim.
-

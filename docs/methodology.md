@@ -2,9 +2,9 @@
 
 ## 1. Current scope
 
-The completed first tranche is a targeted GitHub discovery corpus. It contains eight repositories frozen at exact commits on 2026-08-21 and spans tabular regression, imbalanced classification, fraud detection, loan default, demand forecasting, Titanic survival, and medical imaging.
+The two completed tranches form a targeted GitHub discovery corpus. It contains 15 repositories frozen at exact commits on 2026-08-21 and spans tabular regression, imbalanced classification, fraud detection, loan default, demand forecasting, Titanic survival, medical imaging, cardiovascular classification, and multi-omics drug response.
 
-Seven sources produced verified cases. One source was retained as a negative screening result after its actual feature list disproved the initial suspicion. The unit of screening is a specific file at a commit, not a moving default branch.
+Thirteen sources produced verified cases. Two sources were retained as negative screening results after closer inspection disproved the suspected information path or showed it was a no-op. The unit of screening is a specific file at a commit, not a moving default branch.
 
 This is not a prevalence sample. Candidate-search signatures deliberately over-sample likely failures. Counts describe this atlas tranche only.
 
@@ -14,13 +14,15 @@ Store repository/file identity, commit SHA, permalink, collection timestamp, lic
 
 The frozen manifest controls inclusion. Later repository changes do not alter a released tranche. A new commit is a new screening unit when the relevant pipeline changes.
 
-### Discovery signatures for tranche 1
+### Discovery signatures for tranches 1 and 2
 
 - `fit_transform` or full-matrix scaling before `train_test_split`
 - `SMOTE.fit_resample` before `train_test_split`
 - default shuffled `train_test_split` in a forecasting task
 - Titanic `boat` or `body` fields used to predict survival
 - duplicate or near-duplicate images discussed across train/test boundaries
+- full-data imputation, feature selection, or PCA before holdout splitting or cross-validation
+- variables named as test data supplied to training callbacks or evaluated repeatedly for best-epoch selection
 
 Search results were manually checked against execution order and task semantics. A matching string did not determine the verdict.
 
@@ -50,6 +52,7 @@ Search code and execution order for indicators such as:
 - `shift`, rolling windows, global aggregates, random splits in time-indexed tasks;
 - fitting scalers, imputers, selectors, PCA, encoders, or resampling before a split;
 - hashes, IDs, groups, or perceptual similarity indicating overlap across folds.
+- test-set metrics or labels used for early stopping, checkpoint selection, threshold selection, or tuning.
 
 These indicators prioritize review. They do not determine the verdict.
 

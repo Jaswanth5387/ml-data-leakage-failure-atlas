@@ -9,16 +9,16 @@
 
 ## Phase 1 — Corpus freeze
 
-- [x] Freeze the first eight-source GitHub discovery tranche
+- [x] Freeze two GitHub discovery tranches totaling 15 sources
 - [x] Record exact revisions, licenses, and screening outcomes
 - [ ] Export the separate Kaggle notebook/version manifest
 - [ ] Assign independent reviewers
 
 ## Phase 2 — Screening and verification
 
-- [x] Screen GitHub tranche 1
+- [x] Screen GitHub tranches 1 and 2
 - [ ] Deduplicate copied implementations
-- [ ] Reproduce the seven high-confidence cases
+- [ ] Reproduce the 13 high-confidence cases
 - [ ] Obtain independent review for every verified case
 
 ## Phase 3 — First dataset release

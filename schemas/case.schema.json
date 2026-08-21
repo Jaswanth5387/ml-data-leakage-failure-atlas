@@ -10,7 +10,7 @@
     "title": {"type": "string", "minLength": 8},
     "status": {"enum": ["candidate", "under_review", "verified", "disputed", "withdrawn"]},
     "confidence": {"enum": ["confirmed", "probable", "ambiguous"]},
-    "primary_mechanism": {"enum": ["target", "temporal", "preprocessing", "contamination"]},
+    "primary_mechanism": {"enum": ["target", "temporal", "preprocessing", "contamination", "evaluation"]},
     "subtype": {"type": "string", "minLength": 3},
     "source_type": {"enum": ["kaggle", "github", "paper"]},
     "source_url": {"type": "string", "format": "uri"},
@@ -20,4 +20,3 @@
     "case_file": {"type": "string", "pattern": "^cases/MLA-[0-9]{3}[-_].+\\.md$"}
   }
 }
-

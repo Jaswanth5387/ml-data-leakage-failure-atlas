@@ -23,7 +23,7 @@ SOURCE_COLUMNS = [
 ALLOWED = {
     "status": {"candidate", "under_review", "verified", "disputed", "withdrawn"},
     "confidence": {"confirmed", "probable", "ambiguous"},
-    "primary_mechanism": {"target", "temporal", "preprocessing", "contamination"},
+    "primary_mechanism": {"target", "temporal", "preprocessing", "contamination", "evaluation"},
     "source_type": {"kaggle", "github", "paper"},
     "reproduction_status": {"reproduced", "partially_reproduced", "static_verified", "not_reproduced", "not_attempted"},
     "impact_basis": {"measured", "inferred", "unknown"},
