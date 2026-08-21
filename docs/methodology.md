@@ -2,9 +2,9 @@
 
 ## 1. Current scope
 
-The two completed tranches form a targeted GitHub discovery corpus. It contains 15 repositories frozen at exact commits on 2026-08-21 and spans tabular regression, imbalanced classification, fraud detection, loan default, demand forecasting, Titanic survival, medical imaging, cardiovascular classification, and multi-omics drug response.
+The three completed tranches form a targeted discovery corpus. It contains 20 immutable sources: 15 GitHub artifacts and five primary research papers. The corpus spans tabular regression, imbalanced classification, fraud detection, loan default, forecasting, survival prediction, medical imaging, EEG, neuroimaging, cardiovascular classification, and multi-omics drug response.
 
-Thirteen sources produced verified cases. Two sources were retained as negative screening results after closer inspection disproved the suspected information path or showed it was a no-op. The unit of screening is a specific file at a commit, not a moving default branch.
+Eighteen sources produced verified cases. Two sources were retained as negative screening results after closer inspection disproved the suspected information path or showed it was a no-op. The unit of screening is a specific file at a commit or a frozen paper version, not a moving page.
 
 This is not a prevalence sample. Candidate-search signatures deliberately over-sample likely failures. Counts describe this atlas tranche only.
 
@@ -25,6 +25,12 @@ The frozen manifest controls inclusion. Later repository changes do not alter a 
 - variables named as test data supplied to training callbacks or evaluated repeatedly for best-epoch selection
 
 Search results were manually checked against execution order and task semantics. A matching string did not determine the verdict.
+
+### Measured-impact paper tranche 3
+
+The third tranche deliberately samples primary studies that compare a leaky pipeline with a corrected pipeline under controlled conditions. It covers target-dependent missingness, temporal panel leakage, subject/volume overlap, supervised feature selection outside cross-validation, and augmentation overlap.
+
+Metrics from these papers receive `source_measured`, not `measured`. The latter remains reserved for an independent atlas rerun.
 
 ### Planned Kaggle tranche
 
@@ -51,7 +57,7 @@ Search code and execution order for indicators such as:
 - target encoding, grouped target statistics, and post-outcome columns;
 - `shift`, rolling windows, global aggregates, random splits in time-indexed tasks;
 - fitting scalers, imputers, selectors, PCA, encoders, or resampling before a split;
-- hashes, IDs, groups, or perceptual similarity indicating overlap across folds.
+- hashes, IDs, groups, or perceptual similarity indicating overlap across folds;
 - test-set metrics or labels used for early stopping, checkpoint selection, threshold selection, or tuning.
 
 These indicators prioritize review. They do not determine the verdict.

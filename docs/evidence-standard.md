@@ -14,6 +14,15 @@ Every case must make an audit possible without relying on the annotator's author
 - Reproduction environment, command, seed, result, and date
 - Correction with the smallest change that restores the boundary
 
+## Impact provenance
+
+- `measured`: the atlas independently ran a controlled leaky-versus-corrected comparison.
+- `source_measured`: the primary source reports a controlled comparison that the atlas has verified statically but not rerun.
+- `inferred`: the information path establishes risk, but no controlled magnitude is available.
+- `unknown`: the available evidence does not support an impact direction.
+
+Never present `source_measured` as an atlas reproduction.
+
 ## Safe wording
 
 Describe observable behavior: “the scaler is fitted on the full matrix before the split.” Avoid claims about an author's motives, competence, or production system.
@@ -31,4 +40,3 @@ Prefer a commit permalink, notebook version URL, DOI, or web archive. Do not cop
 - `static_verified`: code and data semantics establish the path without a rerun.
 - `not_reproduced`: a documented attempt failed.
 - `not_attempted`: no execution attempt has been made.
-

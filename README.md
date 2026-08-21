@@ -4,7 +4,7 @@ An evidence-first catalog of data leakage found in real, publicly accessible mac
 
 This repository is a research artifact, not a collection of textbook examples. Every accepted case must point to a stable public source, identify the exact leaking code or data operation, explain the violated evaluation boundary, and record how the finding was checked.
 
-> **Project status:** two research tranches. There are currently **13 verified, commit-pinned cases**. All 13 are statically verified and have `inferred`, not measured, impact. Controlled reruns are the next stage.
+> **Project status:** three targeted research tranches. There are currently **18 verified cases at immutable revisions**. Five have controlled impact comparisons reported by their primary sources; the atlas has not yet independently rerun them.
 
 ## Research question
 
@@ -12,7 +12,7 @@ How does data leakage appear in public ML work, how strong is the available evid
 
 ## Current frozen corpus
 
-The completed screening corpus contains 15 public GitHub repositories frozen at exact commits on 2026-08-21. Thirteen contain verified findings; two candidates failed the evidence test and remain in the manifest as negative screening results.
+The completed screening corpus contains 20 immutable sources: 15 public GitHub artifacts and five primary research papers. Eighteen contain verified findings; two GitHub candidates failed the evidence test and remain in the manifest as negative screening results.
 
 The tranches were selected with fixed candidate-discovery signatures for preprocessing before splitting, resampling before splitting, random time-series splitting, post-outcome Titanic fields, duplicate medical images, and use of a test partition during training or model selection. This is a targeted discovery corpus, not a random sample, so its mechanism counts must not be presented as prevalence estimates.
 
@@ -35,8 +35,15 @@ The exact source and revision list lives in [`corpus/sources.csv`](corpus/source
 | [MLA-011](cases/MLA-011_deepcdr_test_set_early_stopping.md) | Test-set early stopping | DeepCDR | Static, impact inferred |
 | [MLA-012](cases/MLA-012_drugcell_test_set_model_selection.md) | Test-set model selection | DrugCell | Static, impact inferred |
 | [MLA-013](cases/MLA-013_moli_feature_selection_before_cv.md) | Feature selection before CV | MOLI | Static, impact inferred |
+| [MLA-014](cases/MLA-014_stroke_missingness_target_proxy.md) | Target-dependent missingness | Stroke-type study | Static, source impact measured |
+| [MLA-015](cases/MLA-015_panel_forecasting_temporal_leakage.md) | Future periods and contemporaneous predictors | US county panel study | Static, source impact measured |
+| [MLA-016](cases/MLA-016_oct_subject_overlap.md) | Subject/volume overlap | OCT classification study | Static, source impact measured |
+| [MLA-017](cases/MLA-017_connectome_feature_selection_leakage.md) | Supervised feature selection before CV | Connectome study | Static, source impact measured |
+| [MLA-018](cases/MLA-018_eeg_augmentation_overlap.md) | Augmentation and patient overlap | PTSD EEG study | Static, source impact measured |
 
-Current mechanism count: preprocessing 7, evaluation 3, temporal 1, target 1, contamination 1.
+Current mechanism count: preprocessing 8, evaluation 3, contamination 3, temporal 2, target 2.
+
+Impact evidence: 5 `source_measured` and 13 `inferred`. `source_measured` means the primary source published a controlled leaky-versus-corrected comparison; it does not mean this atlas independently reproduced the experiment.
 
 ## What qualifies as a case
 

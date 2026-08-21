@@ -38,7 +38,7 @@ Connect the evidence to the task semantics. A suspicious API call alone is not e
 
 ## Impact
 
-State `measured`, `inferred`, or `unknown`. Include leaky/corrected metrics only when the comparison is controlled.
+State `measured`, `source_measured`, `inferred`, or `unknown`. Use `measured` only for an atlas rerun and `source_measured` for a controlled comparison reported by the source.
 
 ## Correction
 
@@ -59,4 +59,3 @@ Show the smallest practical correction and explain why it restores isolation.
 - Independent reviewer:
 - Open questions:
 - Author correction/contact record, if any:
-
