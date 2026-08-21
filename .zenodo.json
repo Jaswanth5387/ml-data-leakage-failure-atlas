@@ -1,0 +1,11 @@
+{
+  "title": "ML Data Leakage Failure Atlas",
+  "description": "An evidence-first catalog of data leakage traced to real public machine-learning projects.",
+  "upload_type": "dataset",
+  "license": "cc-by-4.0",
+  "creators": [
+    {"name": "Jaswanth"}
+  ],
+  "keywords": ["machine learning", "data leakage", "evaluation", "reproducibility", "failure analysis"],
+  "access_right": "open"
+}
