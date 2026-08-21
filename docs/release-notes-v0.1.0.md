@@ -1,5 +1,7 @@
 # ML Data Leakage Failure Atlas v0.1.0
 
+Published archive: [DOI: 10.5281/zenodo.22046288](https://doi.org/10.5281/zenodo.22046288)
+
 This is the first reviewed release of the ML Data Leakage Failure Atlas, an evidence-first dataset of leakage found in real public machine-learning work and primary research sources.
 
 ## Included in this release

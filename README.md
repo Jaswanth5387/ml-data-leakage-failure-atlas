@@ -1,5 +1,7 @@
 # ML Data Leakage Failure Atlas
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22046288.svg)](https://doi.org/10.5281/zenodo.22046288)
+
 An evidence-first catalog of data leakage found in real, publicly accessible machine-learning projects.
 
 This repository is a research artifact, not a collection of textbook examples. Every accepted case must point to a stable public source, identify the exact leaking code or data operation, explain the violated evaluation boundary, and record how the finding was checked.
@@ -95,7 +97,7 @@ Candidates are not automatically findings. For example, `shantnu/Titanic-Machine
 ## Outputs
 
 - Versioned GitHub dataset and documentation
-- Zenodo archive and DOI after the first reviewed release
+- Versioned Zenodo archive with DOI
 - Summary analysis after a sufficient verified sample exists
 - Conference lightning-talk submission based on reviewed findings
 - A future benchmark for agents that detect and explain leakage
@@ -106,7 +108,6 @@ This project studies code and evaluation design. It does not label authors as ca
 
 ## Citation and license
 
-Citation metadata is in [`CITATION.cff`](CITATION.cff), and Zenodo deposit metadata is in [`.zenodo.json`](.zenodo.json). Dataset and written case annotations are licensed under [CC BY 4.0](LICENSE-DATA); repository code is licensed under the [MIT License](LICENSE-CODE). Source projects retain their own copyrights and licenses.
+The archived `v0.1.0` dataset is available at [DOI: 10.5281/zenodo.22046288](https://doi.org/10.5281/zenodo.22046288). Citation metadata is in [`CITATION.cff`](CITATION.cff), and Zenodo deposit metadata is in [`.zenodo.json`](.zenodo.json).
 
-The DOI will be added after Zenodo archives the `v0.1.0` GitHub release. See the [release checklist](docs/release-checklist.md) for the exact publication sequence.
-Prepared release notes are in [`docs/release-notes-v0.1.0.md`](docs/release-notes-v0.1.0.md).
+Dataset and written case annotations are licensed under [CC BY 4.0](LICENSE-DATA); repository code is licensed under the [MIT License](LICENSE-CODE). Source projects retain their own copyrights and licenses. Prepared release notes are in [`docs/release-notes-v0.1.0.md`](docs/release-notes-v0.1.0.md).

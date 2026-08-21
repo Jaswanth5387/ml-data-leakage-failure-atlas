@@ -9,6 +9,7 @@ authors:
 repository-code: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 url: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 license: CC-BY-4.0
+doi: 10.5281/zenodo.22046288
 keywords:
   - machine learning
   - data leakage
