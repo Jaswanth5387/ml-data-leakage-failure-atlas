@@ -4,9 +4,8 @@
   "upload_type": "dataset",
   "license": "cc-by-4.0",
   "creators": [
-    {"name": "Jaswanth", "orcid": ""}
+    {"name": "Jaswanth"}
   ],
   "keywords": ["machine learning", "data leakage", "evaluation", "reproducibility", "failure analysis"],
   "access_right": "open"
 }
-
