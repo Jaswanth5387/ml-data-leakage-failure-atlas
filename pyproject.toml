@@ -1,10 +1,9 @@
 [project]
 name = "ml-data-leakage-failure-atlas"
-version = "0.0.0"
+version = "0.1.0"
 description = "Validation tools for an evidence-first atlas of real ML data leakage failures"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 
 [tool.ruff]
 line-length = 110
-

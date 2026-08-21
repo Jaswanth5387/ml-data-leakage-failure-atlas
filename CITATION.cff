@@ -2,11 +2,18 @@ cff-version: 1.2.0
 message: "If you use this atlas, cite the versioned release."
 title: "ML Data Leakage Failure Atlas"
 type: dataset
+abstract: "An evidence-first catalog of data leakage traced to real public machine-learning projects and primary research sources."
 authors:
   - family-names: "Jaswanth"
     alias: "Jaswanth5387"
 repository-code: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 url: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 license: CC-BY-4.0
-version: 0.0.0-dev
+keywords:
+  - machine learning
+  - data leakage
+  - evaluation
+  - reproducibility
+  - failure analysis
+version: 0.1.0
 date-released: 2026-08-21

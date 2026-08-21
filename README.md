@@ -4,7 +4,7 @@ An evidence-first catalog of data leakage found in real, publicly accessible mac
 
 This repository is a research artifact, not a collection of textbook examples. Every accepted case must point to a stable public source, identify the exact leaking code or data operation, explain the violated evaluation boundary, and record how the finding was checked.
 
-> **Project status:** three targeted research tranches. There are currently **18 verified cases at immutable revisions**. Five have controlled impact comparisons reported by their primary sources; the atlas has not yet independently rerun them.
+> **Version 0.1.0 scope:** three targeted research tranches with **18 verified cases at immutable revisions**. Five have controlled impact comparisons reported by their primary sources; the atlas has not yet independently rerun them.
 
 ## Research question
 
@@ -79,6 +79,7 @@ Python 3.10 or newer is enough; the validator has no third-party runtime depende
 ```bash
 python scripts/validate_cases.py
 python -m unittest discover -s tests -v
+python scripts/check_release.py 0.1.0
 ```
 
 ## Add a candidate
@@ -105,4 +106,7 @@ This project studies code and evaluation design. It does not label authors as ca
 
 ## Citation and license
 
-Citation metadata is in [`CITATION.cff`](CITATION.cff). Dataset and written case annotations are licensed under [CC BY 4.0](LICENSE-DATA); repository code is licensed under the [MIT License](LICENSE-CODE). Source projects retain their own copyrights and licenses.
+Citation metadata is in [`CITATION.cff`](CITATION.cff), and Zenodo deposit metadata is in [`.zenodo.json`](.zenodo.json). Dataset and written case annotations are licensed under [CC BY 4.0](LICENSE-DATA); repository code is licensed under the [MIT License](LICENSE-CODE). Source projects retain their own copyrights and licenses.
+
+The DOI will be added after Zenodo archives the `v0.1.0` GitHub release. See the [release checklist](docs/release-checklist.md) for the exact publication sequence.
+Prepared release notes are in [`docs/release-notes-v0.1.0.md`](docs/release-notes-v0.1.0.md).

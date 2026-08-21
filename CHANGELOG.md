@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+All notable changes to the atlas are recorded here.
+
+## [0.1.0] - 2026-08-21
 
 - Created the evidence-first repository foundation.
 - Added bounded-corpus methodology, taxonomy, case schema, templates, validation, tests, and talk outline.
