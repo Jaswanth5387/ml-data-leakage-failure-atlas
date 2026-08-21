@@ -1,20 +1,22 @@
-name: Validate atlas
+name: Validate release
 
 on:
   push:
-  pull_request:
+    tags:
+      - "v*"
 
 permissions:
   contents: read
 
 jobs:
-  validate:
+  validate-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Check tag and release metadata
+        run: python scripts/check_release.py "${GITHUB_REF_NAME#v}"
       - run: python scripts/validate_cases.py
       - run: python -m unittest discover -s tests -v
-      - run: python scripts/check_release.py 0.1.0

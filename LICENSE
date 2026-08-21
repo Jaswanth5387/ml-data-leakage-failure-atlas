@@ -1,0 +1,9 @@
+This repository uses two licenses:
+
+- Dataset metadata, case annotations, and documentation: CC BY 4.0.
+  See LICENSE-DATA.
+- Validation and summary code: MIT License.
+  See LICENSE-CODE.
+
+Third-party sources referenced by the atlas retain their original copyrights
+and licenses. They are not relicensed by this repository.
