@@ -4,11 +4,9 @@ title: "ML Data Leakage Failure Atlas"
 type: dataset
 authors:
   - family-names: "Jaswanth"
-    given-names: ""
     alias: "Jaswanth5387"
 repository-code: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 url: "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas"
 license: CC-BY-4.0
 version: 0.0.0-dev
 date-released: 2026-08-21
-
