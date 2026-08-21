@@ -1,0 +1,26 @@
+name: Case correction or dispute
+description: Report missing context, contrary evidence, or a factual error in a case.
+title: "[Case correction]: "
+labels: ["case-correction"]
+body:
+  - type: input
+    id: case
+    attributes:
+      label: Case ID
+      placeholder: MLA-001
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should be corrected?
+      description: Explain the issue and link to stable evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting source or reproduction
+    validations:
+      required: true
+

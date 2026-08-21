@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Jaswanth5387/ml-data-leakage-failure-atlas/blob/main/schemas/case.schema.json",
+  "title": "ML Data Leakage Failure Atlas case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "title", "status", "confidence", "primary_mechanism", "subtype", "source_type", "source_url", "source_revision", "reproduction_status", "impact_basis", "case_file"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^MLA-[0-9]{3}$"},
+    "title": {"type": "string", "minLength": 8},
+    "status": {"enum": ["candidate", "under_review", "verified", "disputed", "withdrawn"]},
+    "confidence": {"enum": ["confirmed", "probable", "ambiguous"]},
+    "primary_mechanism": {"enum": ["target", "temporal", "preprocessing", "contamination"]},
+    "subtype": {"type": "string", "minLength": 3},
+    "source_type": {"enum": ["kaggle", "github", "paper"]},
+    "source_url": {"type": "string", "format": "uri"},
+    "source_revision": {"type": "string", "minLength": 1},
+    "reproduction_status": {"enum": ["reproduced", "partially_reproduced", "static_verified", "not_reproduced", "not_attempted"]},
+    "impact_basis": {"enum": ["measured", "inferred", "unknown"]},
+    "case_file": {"type": "string", "pattern": "^cases/MLA-[0-9]{3}[-_].+\\.md$"}
+  }
+}
+
